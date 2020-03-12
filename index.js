@@ -1,14 +1,25 @@
 const express = require("express");
 const cors = require("cors");
+const mongoose = require("mongoose");
 const path = require("path");
 require("dotenv").config();
 
 const app = express();
 
-//database initial setup
-const database = require("./config/dev");
-//connect to database
-database();
+mongoose
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false
+  })
+  .then(x => {
+    console.log(
+      `Connected to MongoDB ! Database name: "${x.connections[0].name}"`
+    );
+  })
+  .catch(error => {
+    console.error("Error while connecting to MongoDB !", error);
+  });
 
 //body-parser (req.body)
 app.use(express.urlencoded({ extended: true })); //allow server to parse body from POST and PUT requests
