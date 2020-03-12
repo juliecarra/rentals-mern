@@ -1,0 +1,25 @@
+.Footer__title {
+  font-weight: 800;
+  color: rgb(72, 72, 72);
+
+  li,
+  a,
+  .footer {
+    list-style: none;
+    color: rgb(76, 76, 76);
+    font-weight: normal;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 1198px) {
+  i.fab {
+    display: none;
+  }
+}
+
+@media all and (max-width: 768px) {
+  .hr {
+    margin-left: 0px !important;
+  }
+}

@@ -1,0 +1,158 @@
+.booking {
+  padding: 20px;
+  color: rgb(72, 72, 72);
+  border: 1px solid rgb(228, 228, 228);
+
+  .btn-confirm {
+    font-size: 17px;
+    font-weight: 700;
+    padding: 13px;
+    background-color: $quaternary-color;
+    color: $primary-color;
+    display: flex;
+    justify-content: center;
+  }
+
+  .price {
+    font-size: 22px;
+    font-weight: 800;
+  }
+
+  label {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+
+  &-price {
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  &-per-night {
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  &-note-title {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  &-note-text {
+    font-size: 13px;
+    font-weight: 300;
+  }
+
+  .should-login-btn-container {
+    text-align: center;
+    margin-bottom: 10px;
+
+    .btn-login {
+      text-align: center;
+      font-size: 15px;
+      padding: 15px;
+
+      &:hover,
+      &:focus {
+        color: $primary-color;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+// Style BookingModal
+.booking-modal {
+  font-size: 14px;
+  color: #717171;
+  font-weight: 100;
+  .title {
+    font-weight: 700;
+    font-size: 26px;
+  }
+
+  .buttons {
+    margin: 15px 0px;
+  }
+
+  .btn-confirm {
+    background-color: #008489 !important;
+    color: $primary-color;
+    font-weight: 700;
+  }
+
+  .btn-cancel {
+    background-color: $quaternary-color !important;
+    color: $primary-color;
+    font-weight: 700;
+  }
+
+  em {
+    font-style: normal;
+    font-size: 17px;
+    font-weight: 700;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+// Calendar booking
+
+.daterangepicker td.in-range {
+  background-color: $quaternary-color;
+}
+
+.daterangepicker td.active {
+  background-color: $quaternary-color !important;
+}
+
+.btn-primary {
+  background-color: #008489 !important;
+}
+
+/* Style for BookingManage */
+#userBookings {
+  .card {
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  .card-block {
+    padding: 20px;
+  }
+
+  .card-header {
+    text-transform: capitalize;
+  }
+
+  .card-title {
+    font-size: 18px;
+  }
+
+  .booking {
+    &-desc {
+      font-size: 14px;
+    }
+
+    &-days {
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    &-price-value {
+      font-weight: 700;
+    }
+  }
+
+  .btn {
+    background-color: $quaternary-color !important;
+    color: $primary-color;
+    font-weight: 700;
+  }
+}

@@ -1,0 +1,96 @@
+.Signup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__form {
+    color: rgb(118, 118, 118);
+    font-weight: 600;
+  }
+
+  &__title {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .btn {
+    background-color: $quaternary-color;
+    color: $primary-color;
+    font-weight: 800;
+    margin-top: 15px;
+  }
+
+  input[type="submit"].btn-block {
+    width: 50vw;
+  }
+
+  .image-container {
+    position: relative;
+
+    img {
+      width: 100%;
+      border-radius: 5px;
+    }
+  }
+
+  .form-control {
+    width: 50vw;
+  }
+
+  hr {
+    width: 50vw;
+  }
+}
+
+.Login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__form {
+    color: rgb(118, 118, 118);
+    font-weight: 600;
+  }
+
+  &__title {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .form-control {
+    width: 50vw;
+  }
+
+  input[type="submit"].btn-block {
+    width: 50vw;
+  }
+
+  .btn {
+    background-color: $quaternary-color;
+    color: $primary-color;
+    font-weight: 800;
+    margin-top: 15px;
+  }
+
+  hr {
+    width: 50vw;
+  }
+}
+
+/* RentalCreate */
+
+label {
+  text-transform: uppercase;
+  color: #008489;
+}
+
+.page-title {
+  font-weight: bold;
+  color: rgb(118, 118, 118);
+  text-transform: uppercase;
+  text-align: center;
+}
+.middle {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}

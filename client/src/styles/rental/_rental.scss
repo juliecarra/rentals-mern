@@ -1,0 +1,226 @@
+/* Style for RentalItem */
+
+.RentalItem {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  .card {
+    border: none;
+  }
+
+  .card-title {
+    color: rgb(113, 113, 113);
+    font-size: 14px;
+  }
+  .card-subtitle {
+    font-size: 16px;
+    color: $secondary-color;
+    font-weight: 400;
+  }
+  .card-text {
+    color: $secondary-color;
+  }
+}
+
+@media all and (min-width: 480px) and (max-width: 768px) {
+  .card {
+    width: auto !important;
+  }
+  .svg {
+    float: right;
+  }
+  .RentalInfos__sleepingArrangements {
+    width: 50% !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .card {
+    width: auto !important;
+  }
+}
+
+/* Style for RentalDetail */
+
+.RentalDetail {
+  &__title-category {
+    font-size: 1.5em;
+  }
+
+  &__city-country {
+    font-size: 14px;
+    color: $tertiary-color;
+  }
+
+  i {
+    color: $quaternary-color;
+  }
+  .upper-section {
+    img {
+      width: 100%;
+    }
+
+    margin-bottom: 30px;
+  }
+
+  .rental-owner {
+    float: right;
+
+    img {
+      height: 50px;
+      border-radius: 50%;
+      display: block;
+      margin: 0 auto;
+    }
+
+    span {
+      display: block;
+      font-size: 13px;
+      font-weight: 300;
+      text-align: center;
+    }
+  }
+}
+
+/* Style for RentalInfo */
+
+.RentalInfos {
+  &__subtitle {
+    font-size: 22px;
+  }
+
+  &__infos,
+  &__title {
+    font-size: 16px;
+  }
+
+  &__infos {
+    font-weight: 100;
+  }
+
+  &__details,
+  &__arrangements {
+    font-size: 14px;
+    color: $tertiary-color;
+    font-weight: 100;
+  }
+
+  &__description {
+    font-size: 14px;
+    font-weight: 100;
+  }
+  &__sleepingArrangements {
+    height: 100%;
+    width: 30%;
+    text-align: center;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 12px;
+  }
+  &__sleeping {
+    font-size: 22px;
+  }
+
+  .strong {
+    font-weight: bold;
+  }
+}
+
+/* Style for RentalAmenitie */
+
+.RentalAmenitie {
+  font-weight: 100;
+  font-size: 16px;
+}
+
+/* style for RentalManage */
+
+#userRentals {
+  .toBeDeleted {
+    border-color: red;
+  }
+
+  .card {
+    margin-bottom: 20px;
+  }
+
+  // .card-block {
+  //   padding: 20px;
+  // }
+
+  .card-title {
+    font-size: 20px;
+    font-weight: 400;
+    color: rgb(113, 113, 113);
+  }
+
+  .card-footer {
+    font-size: 14px;
+  }
+
+  .delete-menu {
+    margin-top: 5px;
+  }
+
+  .btn-danger,
+  .btn-success {
+    margin-left: 10px;
+    font-size: 14px;
+  }
+
+  .btn-warning {
+    font-size: 14px;
+    color: white;
+    margin-left: 10px;
+  }
+
+  .btn {
+    margin-right: 10px;
+    color: $primary-color;
+    background-color: $quaternary-color;
+    font-weight: 400;
+  }
+}
+
+.rental-booking-modal {
+  .btn {
+    font-size: 14px;
+    padding: 10px 15px;
+    color: $primary-color;
+    background-color: $quaternary-color;
+    font-weight: 400;
+  }
+
+  .bookings-inner-container {
+    p {
+      font-size: 14px;
+      margin-bottom: 0px;
+    }
+  }
+}
+
+/* RentalManageCard style */
+.card-effect {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: #fafafa;
+  border: 0px;
+  transition: all 0.3s ease-in-out;
+}
+
+.card .card-img {
+  height: auto;
+  width: 100%;
+  background-color: #4426a8;
+  position: relative;
+  background-size: cover;
+  background-position: center top;
+}
+
+.card-effect:hover {
+  transform: scale(1.01);
+  transition: all 0.5s ease-in-out;
+}
