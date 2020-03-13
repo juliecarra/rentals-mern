@@ -83,6 +83,9 @@ class PaymentCheckoutForm extends Component {
       <div className="PaymentCheckoutForm">
         <form onSubmit={this.handleSubmit} {...formStyle()}>
           <CardElement {...createOptions()} />
+          <p {...paragraphStyle}>
+            (Test with this credit card number: 4242 4242 4242 4242)
+          </p>
           <p {...paragraphStyle}>You will not be charged yet</p>
           {error && (
             <div className="alert alert-danger alert-payment">{error}</div>

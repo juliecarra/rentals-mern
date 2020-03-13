@@ -28,14 +28,12 @@ router.post("/confirm", middleware, (req, res) => {
   const payment = req.body;
   const user = req.user.id;
 
-  debugger;
-
   Payment.findById(payment._id)
     .populate("toUser")
     .populate("booking")
     .exec(async function(err, foundPayment) {
       if (err) {
-        return res.status(422).send({ errors: normalizeErrors(err.errors) });
+        return res.status(422).send(err);
       }
 
       if (
@@ -58,9 +56,7 @@ router.post("/confirm", middleware, (req, res) => {
 
           foundPayment.save(function(err) {
             if (err) {
-              return res
-                .status(422)
-                .send({ errors: normalizeErrors(err.errors) });
+              return res.status(422).send(err);
             }
 
             User.update(
@@ -68,9 +64,7 @@ router.post("/confirm", middleware, (req, res) => {
               { $inc: { revenue: foundPayment.amount } },
               function(err, user) {
                 if (err) {
-                  return res
-                    .status(422)
-                    .send({ errors: normalizeErrors(err.errors) });
+                  return res.status(422).send(err);
                 }
 
                 return res.json({ status: "paid" });
