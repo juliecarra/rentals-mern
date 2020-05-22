@@ -3,7 +3,7 @@ import React from "react";
 const Footer = () => {
   return (
     <div>
-      <hr className="hr" style={{ width: "100vw", marginLeft: "-130px" }} />
+      <hr className="hr" />
       <br />
       <div className="row">
         <div className="col-sm">
@@ -98,7 +98,7 @@ const Footer = () => {
                   backgroundColor: "#006A70",
                   color: "white",
 
-                  fontSize: "12px"
+                  fontSize: "12px",
                 }}
               >
                 New
@@ -145,9 +145,6 @@ const Footer = () => {
             </a>
           </a>
         </p>
-        {/* <div>
-          <i class="fab fa-facebook-f"></i>
-        </div> */}
       </div>
     </div>
   );

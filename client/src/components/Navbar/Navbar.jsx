@@ -81,18 +81,6 @@ class Navbar extends Component {
           </ul>
         </nav>
         <div class="cover">
-          {/* <h1 className="title">Book unique places to stay.</h1> */}
-          {/* <form class="flex-form">
-            <input
-              onKeyPress={e => {
-                this.handleKeyPress(e);
-              }}
-              ref={this.searchInput}
-              type="search"
-              placeholder="Where do you want to go?"
-            />
-            <input type="submit" value="Search" onClick={this.handleSearch} />
-          </form> */}
           <div className="Search__component">
             <Search />
           </div>
@@ -120,18 +108,6 @@ class Navbar extends Component {
         </nav>
 
         <div class="cover">
-          {/* <h1 className="title">Book unique places to stay.</h1> */}
-          {/* <form class="flex-form">
-            <input
-              onKeyPress={e => {
-                this.handleKeyPress(e);
-              }}
-              ref={this.searchInput}
-              type="search"
-              placeholder="Where do you want to go?"
-            />
-            <input onClick={this.handleSearch} type="submit" value="Search" />
-          </form> */}
           <div className="Search__component">
             <Search />
           </div>
@@ -144,11 +120,11 @@ class Navbar extends Component {
 
 Navbar.propTypes = {
   logoutUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
-  auth: state.auth
+const mapStateToProps = (state) => ({
+  auth: state.auth,
 });
 
 export default withRouter(connect(mapStateToProps, { logoutUser })(Navbar));

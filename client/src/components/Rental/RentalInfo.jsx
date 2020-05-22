@@ -59,7 +59,7 @@ const RentalInfo = ({ rental }) => {
         ""
       )}
       <br />
-      {/* <hr /> */}
+
       <br />
       <h3 className="RentalInfos__description">{rental.description}</h3>
       <br />
@@ -99,7 +99,7 @@ const RentalInfo = ({ rental }) => {
             height: "24px",
             width: "24px",
             fill: "currentcolor",
-            marginBottom: "20px"
+            marginBottom: "20px",
           }}
         >
           <path
