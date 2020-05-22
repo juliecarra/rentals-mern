@@ -11,7 +11,7 @@ class RentalSearch extends Component {
     super(props);
 
     this.state = {
-      searchedCity: ""
+      searchedCity: this.props.match.params.city,
     };
   }
 
@@ -20,22 +20,24 @@ class RentalSearch extends Component {
   }
 
   searchRentalsByCity = () => {
-    const searchedCity = this.props.match.params.city;
+    // const searchedCity = this.props.match.params.city;
+    const { searchedCity } = this.state;
     this.setState({ searchedCity });
     this.props.fetchRentals(searchedCity);
   };
 
-  //   handleTitle() {
-  //     const { errors } = this.props.errors;
-  //     const { searchedCity } = this.state;
-  //     let title = "";
+  // handleTitle() {
+  //   const { errors } = this.props.errors;
 
-  //     if (errors.length > 0) {
-  //       title = errors[0].detail;
-  //     } else {
-  //       title = `Places to stay in ${searchedCity}`;
-  //     }
+  //   const { searchedCity } = this.state;
+  //   let title = "";
+
+  //   if (errors.length > 0) {
+  //     title = errors[0].detail;
+  //   } else {
+  //     title = `Places to stay in ${searchedCity}`;
   //   }
+  // }
 
   render() {
     const { rentals, errors } = this.props;
@@ -59,13 +61,13 @@ class RentalSearch extends Component {
 
 RentalSearch.propTypes = {
   fetchRentals: PropTypes.func.isRequired,
-  rentals: PropTypes.array.isRequired
+  rentals: PropTypes.array.isRequired,
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     rentals: state.rentals.rentals,
-    errors: state.errors.errors
+    errors: state.errors.errors,
   };
 };
 

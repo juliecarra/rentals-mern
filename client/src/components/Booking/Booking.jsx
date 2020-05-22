@@ -23,12 +23,12 @@ class Booking extends Component {
         endAt: "",
         guests: "",
         // rental: {}
-        paymentToken: ""
+        paymentToken: "",
       },
       modal: {
-        open: false
+        open: false,
       },
-      errors: []
+      errors: [],
     };
     this.handleEvent = this.handleEvent.bind(this);
     this.handleInvalidDates = this.handleInvalidDates.bind(this);
@@ -47,7 +47,7 @@ class Booking extends Component {
     const { bookings } = this.props.rental;
 
     if (bookings && bookings.length > 0) {
-      bookings.forEach(booking => {
+      bookings.forEach((booking) => {
         const dateRange = getRangeOfDates(
           booking.startAt,
           booking.endAt,
@@ -60,7 +60,7 @@ class Booking extends Component {
   }
 
   //check if the bookedOutDates includes the current date and check if the date is not a past date
-  handleInvalidDates = date => {
+  handleInvalidDates = (date) => {
     return (
       this.bookedOutDates.includes(date.format("Y/MM/DD")) ||
       date.diff(moment(), "days") < 0
@@ -77,17 +77,17 @@ class Booking extends Component {
       proposedBooking: {
         ...this.state.proposedBooking,
         startAt,
-        endAt
-      }
+        endAt,
+      },
     });
   }
 
-  handleOnChange = e => {
+  handleOnChange = (e) => {
     this.setState({
       proposedBooking: {
         ...this.state.proposedBooking,
-        guests: parseInt(e.target.value)
-      }
+        guests: parseInt(e.target.value),
+      },
     });
   };
 
@@ -102,8 +102,8 @@ class Booking extends Component {
         ...this.state.proposedBooking,
         days,
         totalPrice: days * rental.dailyRate,
-        rental
-      }
+        rental,
+      },
     });
   };
 
@@ -119,14 +119,14 @@ class Booking extends Component {
   reserveRental = () => {
     this.props
       .createBooking(this.state.proposedBooking)
-      .then(booking => {
-        // console.log(booking);
+      .then((booking) => {
+        console.log(booking);
         this.cancelReservation();
         this.resetData();
         toast.success("Booking has been succesfully created! Enjoy.");
         this.addNewBookedOutDates(booking);
       })
-      .catch(errors => {
+      .catch((errors) => {
         this.setState({ errors });
       });
   };
@@ -238,11 +238,11 @@ class Booking extends Component {
 
 Booking.propTypes = {
   createBooking: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
-  auth: state.auth
+const mapStateToProps = (state) => ({
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps, { createBooking })(Booking);

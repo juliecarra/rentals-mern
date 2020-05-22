@@ -32,7 +32,7 @@ class Search extends Component {
           <input
             class="input"
             placeholder="City"
-            onKeyPress={e => {
+            onKeyPress={(e) => {
               this.handleKeyPress(e);
             }}
             ref={this.searchInput}

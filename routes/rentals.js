@@ -22,7 +22,7 @@ router.get("/manage", middleware, async (req, res) => {
   try {
     await Rental.where({ user })
       .populate("bookings")
-      .exec(function(error, foundRentals) {
+      .exec(function (error, foundRentals) {
         if (error) {
           return res.status(400).json({ msg: "rental not found" });
         }
@@ -65,32 +65,54 @@ router.get("/:id", async (req, res) => {
 @access   public
 */
 
+// router.get("/", async (req, res) => {
+//   const city = req.query.city;
+//   const query = city ? { city: city.toLowerCase() } : {};
+
+//   try {
+//     await Rental.find(query)
+//       .sort({ date: -1 })
+//       .select("-bookings")
+//       .exec(function (error, foundRentals) {
+//         if (error) {
+//           res.status(500).send("server error");
+//         }
+//         if (city && foundRentals.length === 0) {
+//           return res.status(422).send({
+//             errors: [
+//               {
+//                 title: "no rentals found!",
+//                 detail: `there are no rentals for city ${city}`,
+//               },
+//             ],
+//           });
+//         }
+//         return res.json(foundRentals);
+//       });
+//   } catch (error) {
+//     res.status(500).send("server error");
+//   }
+// });
+
 router.get("/", async (req, res) => {
   const city = req.query.city;
   const query = city ? { city: city.toLowerCase() } : {};
 
   try {
-    await Rental.find(query)
+    var rentals = await Rental.find(query)
       .sort({ date: -1 })
       .select("-bookings")
-      .exec(function(error, foundRentals) {
-        if (error) {
-          res.status(500).send("server error");
-        }
-        if (city && foundRentals.length === 0) {
-          return res.status(422).send({
-            errors: [
-              {
-                title: "no rentals found!",
-                detail: `there are no rentals for city ${city}`
-              }
-            ]
-          });
-        }
-        return res.json(foundRentals);
+      .exec();
+
+    if (city) {
+      rentals = rentals.filter((rental) => {
+        return rental.city === city.toLowerCase();
       });
+    }
+
+    return res.status(200).json(rentals);
   } catch (error) {
-    res.status(500).send("server error");
+    return res.status(500).json(error);
   }
 });
 
@@ -103,42 +125,20 @@ router.get("/", async (req, res) => {
 router.post(
   "/",
   [
-    check("title", "title is required")
-      .not()
-      .isEmpty(),
-    check("subtitle", "subtitle is required")
-      .not()
-      .isEmpty(),
-    check("city", "city is required")
-      .not()
-      .isEmpty(),
-    check("country", "country is required")
-      .not()
-      .isEmpty(),
-    check("image", "image is required")
-      .not()
-      .isEmpty(),
-    check("category", "category is required")
-      .not()
-      .isEmpty(),
-    check("description", "description is required")
-      .not()
-      .isEmpty(),
-    check("guests", "guests is required")
-      .not()
-      .isEmpty(),
-    check("beds", "beds is required")
-      .not()
-      .isEmpty(),
-    check("bedrooms", "bedrooms is required")
-      .not()
-      .isEmpty(),
-    check("bathrooms", "bathrooms is required")
-      .not()
-      .isEmpty(),
+    check("title", "title is required").not().isEmpty(),
+    check("subtitle", "subtitle is required").not().isEmpty(),
+    check("city", "city is required").not().isEmpty(),
+    check("country", "country is required").not().isEmpty(),
+    check("image", "image is required").not().isEmpty(),
+    check("category", "category is required").not().isEmpty(),
+    check("description", "description is required").not().isEmpty(),
+    check("guests", "guests is required").not().isEmpty(),
+    check("beds", "beds is required").not().isEmpty(),
+    check("bedrooms", "bedrooms is required").not().isEmpty(),
+    check("bathrooms", "bathrooms is required").not().isEmpty(),
     check("sleepingArrangements", "sleepingArrangements is required")
       .not()
-      .isEmpty()
+      .isEmpty(),
   ],
   middleware,
   uploader.single("image"),
@@ -174,7 +174,7 @@ router.post(
       description,
       amenities,
       sleepingArrangements,
-      dailyRate
+      dailyRate,
     } = req.body;
 
     //  const image = req.file;
@@ -205,7 +205,7 @@ router.post(
         amenities,
         sleepingArrangements,
         dailyRate,
-        user: req.user.id
+        user: req.user.id,
       });
 
       // if (req.file) newRental.image = req.file.secure_url;
@@ -213,7 +213,7 @@ router.post(
       User.updateOne(
         { _id: req.user.id },
         { $push: { rentals: newRental } },
-        function() {}
+        function () {}
       );
       const rental = await newRental.save();
       res.status(200).json(rental);
